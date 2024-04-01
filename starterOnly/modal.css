@@ -527,3 +527,9 @@ footer {
   }
 }
 
+.error {font-size: small;
+  color: red;
+  display: none;
+}
+
+
