@@ -29,17 +29,21 @@ function closeModal() {
 
 // Regex pour vérifier si le champ nom et prénom contient au moins 2 lettres
 const nomRegex = /^[a-zA-ZÀ-ÿ\s']{2,}$/;
+
+
 // Regex  champ email
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 
 
 function validate() {
+  // Selection des valeurs dans le DOM
   const inputFirst = document.getElementById("first").value;
   const inputLast = document.getElementById("last").value;
   const inputEmail = document.getElementById("email").value;
   const inputDate = document.getElementById("birthdate").value;
   const inputQuantity = document.getElementById("quantity").value;
+  // Selection pour les erreurs
   const errorFirst = document.querySelector(".firstname");
   const errorLast = document.querySelector(".lastname");
   const errorMail = document.querySelector(".mail");
