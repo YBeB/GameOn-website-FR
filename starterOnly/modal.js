@@ -71,15 +71,6 @@ function validate() {
     errorMail.style.display = "none";
     document.getElementById("email").style.border = "0px";
   }
-  if ((!dateRegex.test(inputDate))) {
-    errorBirthDate.style.display = "block";
-    document.getElementById("birthdate").style.border = "1px solid red";
-    console.log(inputDate)
-    boolean = false;
-  } else {
-    errorBirthDate.style.display = "none";
-    document.getElementById("birthdate").style.border = "0px";
-  }
 
   return boolean;
 }
