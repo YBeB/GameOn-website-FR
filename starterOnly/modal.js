@@ -48,6 +48,7 @@ function validate() {
   const errorLast = document.querySelector(".lastname");
   const errorMail = document.querySelector(".mail");
   const errorBirthDate = document.querySelector(".birthdate");
+
   let boolean = true;
   if (!nomRegex.test(inputFirst)) {
     errorFirst.style.display = "block";
