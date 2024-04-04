@@ -34,7 +34,11 @@ const nomRegex = /^[a-zA-ZÀ-ÿ\s']{2,}$/;
 // Regex  champ email
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+// Regex date
+const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
 
+// Regex nombre de tournoi
+const numberRegex=/^\d+$/;
 
 function validate() {
   // Selection des valeurs dans le DOM
@@ -43,39 +47,80 @@ function validate() {
   const inputEmail = document.getElementById("email").value;
   const inputDate = document.getElementById("birthdate").value;
   const inputQuantity = document.getElementById("quantity").value;
+  const inputOptions = document.querySelectorAll('input[name="location"]:checked');
+  const checkboxCondition = document.getElementById('checkbox1');
   // Selection pour les erreurs
   const errorFirst = document.querySelector(".firstname");
   const errorLast = document.querySelector(".lastname");
   const errorMail = document.querySelector(".mail");
   const errorBirthDate = document.querySelector(".birthdate");
+  const errorQuantity = document.querySelector(".quantity")
+  const errorOption =document.querySelector(".option")
+  const errorCondition =document.querySelector(".condition")
 
   let boolean = true;
+  //Vérification du prénom 
   if (!nomRegex.test(inputFirst)) {
     errorFirst.style.display = "block";
-    document.getElementById("first").style.border = "1px solid red";
+    document.getElementById("first").style.border = "3px solid red";
     boolean = false;
   } else {
     errorFirst.style.display = "none";
     document.getElementById("first").style.border = "0px";
   }
-
+// Vérification du nom
   if (!nomRegex.test(inputLast)) {
     errorLast.style.display = "block";
-    document.getElementById("last").style.border = "1px solid red";
+    document.getElementById("last").style.border = "3px solid red";
     boolean = false;
   } else {
     errorLast.style.display = "none";
     document.getElementById("last").style.border = "0px";
   }
-
+  //Vérification de la date au bon format
+ if (!dateRegex.test(inputDate)){ errorBirthDate.style.display="block";
+document.getElementById("birthdate").style.border="3px solid red";
+boolean=false;
+}
+ else{
+  errorBirthDate.style.display="none";
+  document.getElementById("birthdate").style.border = "0px";
+ }
+ //Vérication du mail
   if (!emailRegex.test(inputEmail)) {
     errorMail.style.display = "block";
-    document.getElementById("email").style.border = "1px solid red";
+    document.getElementById("email").style.border = "3px solid red";
     boolean = false;
   } else {
     errorMail.style.display = "none";
     document.getElementById("email").style.border = "0px";
   }
+  if(!numberRegex.test(inputQuantity)){
+    errorQuantity.style.display="block";
+    document.getElementById("quantity").style.border ="3px solid red"
+    boolean=false ;
+  }
+  else{ errorQuantity.style.display ="none"
+  document.getElementById("quantity").style.border ="0px"
+}
+//Vérification qu'au moins une case est cochée 
+  if (inputOptions.length===0){
+    errorOption.style.display="block"
+    boolean=false;
 
+  }
+  else{
+    errorOption.style.display="none";
+
+  }
+  //Vérification d'acceptation des conditions d'utilisation 
+  if(!checkboxCondition.checked){
+   errorCondition.style.display="block"
+    boolean=false;
+  }
+  else{
+    errorCondition.style.display="none"
+
+  }
   return boolean;
 }

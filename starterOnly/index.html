@@ -107,11 +107,14 @@
                   name="birthdate"
                 /><br>
                 <p class="error birthdate">Vous devez entrer votre date de naissance.</p>
+
               </div>
               <div
                 class="formData">
                 <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
-                <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
+                <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99"><br>
+                <p class="error quantity">Veuillez entrer une quantitée valide.
+                </p>
               </div>
               <p class="text-label">A quel tournoi souhaitez-vous participer cette année ?</p>
               <div
@@ -182,7 +185,7 @@
                   <span class="checkbox-icon"></span>
                   Portland</label
                 >
-                <p class="error__option">Vous devez choisir une option.</p>
+                <p class="error  option">Vous devez choisir une option.</p>
               </div>
 
               <div
@@ -204,6 +207,7 @@
                   Je Je souhaite être prévenu des prochains évènements.
                 </label>
                 <br>
+                <p class="error condition">Vous devez accepter les conditions d'utilisation.</p>
               </div>
               <input
                 class="btn-submit"
