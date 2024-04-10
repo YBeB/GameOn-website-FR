@@ -533,4 +533,10 @@ footer {
   display: none;
 }
 
+#successModal>h2{
+display: flex;
+justify-content: center;
+align-items: center;
+height: 712px;
 
+}

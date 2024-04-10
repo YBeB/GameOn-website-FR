@@ -61,7 +61,7 @@
               name="reserve"
               action="index.html"
               method="get"
-              onsubmit="return validate();"
+              onsubmit="return validate(event);"
             >
               <div
                 class="formData">
@@ -216,6 +216,15 @@
                 value="C'est parti"
               />
             </form>
+          </div>
+          <div id="successModal" class="bground" style="display: none;">
+            <div class="content">
+              <div class="modal-body heigt-modal">
+                <span class="close" ></span>
+                <h2>Merci pour votre inscription</h2>
+                <button class="btn-submit" onclick="closeSuccessModal()">Fermer</button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
