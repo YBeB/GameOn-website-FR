@@ -7,15 +7,13 @@ function editNav() {
   }
 }
 
+// Selection de l'icone
+var icon = document.querySelector(".icon");
 
-// Selection de l'icone 
-  var icon = document.querySelector('.icon');
-
-  // Ajout de l'event listener
-  icon.addEventListener('click', function() {
-      editNav();
-  });
-
+// Ajout de l'event listener
+icon.addEventListener("click", function () {
+  editNav();
+});
 
 // DOM Elements
 const modalbg = document.querySelector(".bground");
@@ -26,7 +24,7 @@ const buttonSubmit = document.querySelectorAll(".btn-submit");
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 closeX.forEach((btn) => btn.addEventListener("click", closeModal));
-buttonSubmit.forEach((btn)=>btn.addEventListener("click",validate))
+buttonSubmit.forEach((btn) => btn.addEventListener("click", validate));
 // launch modal form
 function launchModal() {
   modalbg.style.display = "block";
@@ -37,21 +35,19 @@ function closeModal() {
   modalbg.style.display = "none";
 }
 
-
-
 function validate(event) {
   event.preventDefault();
   // Regex pour vérifier si le champ nom et prénom contient au moins 2 lettres
-const nomRegex = /^[a-zA-ZÀ-ÿ\s']{2,}$/;
+  const nomRegex = /^[a-zA-ZÀ-ÿ\s']{2,}$/;
 
-// Regex  champ email
-const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  // Regex  champ email
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-// Regex date
-const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
+  // Regex date
+  const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
 
-// Regex nombre de tournoi
-const numberRegex = /^\d+$/;
+  // Regex nombre de tournoi
+  const numberRegex = /^\d+$/;
   // Selection des valeurs dans le DOM
   const inputFirst = document.getElementById("first").value;
   const inputLast = document.getElementById("last").value;
@@ -132,14 +128,14 @@ const numberRegex = /^\d+$/;
   }
   // Apparation du message apres inscription
   if (isValid) {
-    document.querySelector('.modal-body').style.display = 'none';
+    document.querySelector(".modal-body").style.display = "none";
     document.getElementById("sucessModal").style.display = "block";
   }
-
 }
-const sucessClose=document.querySelectorAll('.btn-success')
-sucessClose.forEach((btn)=>btn.addEventListener("click",closeSucessModal))
+
+const sucessClose = document.querySelectorAll(".btn-success");
+sucessClose.forEach((btn) => btn.addEventListener("click", closeSucessModal));
 function closeSucessModal() {
-  document.querySelector('.bground').style.display = 'none';
-  location.reload()
+  document.querySelector(".bground").style.display = "none";
+  location.reload();
 }
