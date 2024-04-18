@@ -7,16 +7,26 @@ function editNav() {
   }
 }
 
+
+// Selection de l'icone 
+  var icon = document.querySelector('.icon');
+
+  // Ajout de l'event listener
+  icon.addEventListener('click', function() {
+      editNav();
+  });
+
+
 // DOM Elements
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const closeX = document.querySelectorAll(".close");
-
 const buttonSubmit = document.querySelectorAll(".btn-submit");
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 closeX.forEach((btn) => btn.addEventListener("click", closeModal));
+buttonSubmit.forEach((btn)=>btn.addEventListener("click",validate))
 // launch modal form
 function launchModal() {
   modalbg.style.display = "block";
@@ -27,7 +37,11 @@ function closeModal() {
   modalbg.style.display = "none";
 }
 
-// Regex pour vérifier si le champ nom et prénom contient au moins 2 lettres
+
+
+function validate(event) {
+  event.preventDefault();
+  // Regex pour vérifier si le champ nom et prénom contient au moins 2 lettres
 const nomRegex = /^[a-zA-ZÀ-ÿ\s']{2,}$/;
 
 // Regex  champ email
@@ -38,9 +52,6 @@ const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
 
 // Regex nombre de tournoi
 const numberRegex = /^\d+$/;
-
-function validate(event) {
-  event.preventDefault();
   // Selection des valeurs dans le DOM
   const inputFirst = document.getElementById("first").value;
   const inputLast = document.getElementById("last").value;
@@ -60,12 +71,12 @@ function validate(event) {
   const errorOption = document.querySelector(".option");
   const errorCondition = document.querySelector(".condition");
 
-  let boolean = true;
+  let isValid = true;
   //Vérification du prénom
   if (!nomRegex.test(inputFirst)) {
     errorFirst.style.display = "block";
     document.getElementById("first").style.border = "3px solid red";
-    boolean = false;
+    isValid = false;
   } else {
     errorFirst.style.display = "none";
     document.getElementById("first").style.border = "0px";
@@ -74,7 +85,7 @@ function validate(event) {
   if (!nomRegex.test(inputLast)) {
     errorLast.style.display = "block";
     document.getElementById("last").style.border = "3px solid red";
-    boolean = false;
+    isValid = false;
   } else {
     errorLast.style.display = "none";
     document.getElementById("last").style.border = "0px";
@@ -83,7 +94,7 @@ function validate(event) {
   if (!dateRegex.test(inputDate)) {
     errorBirthDate.style.display = "block";
     document.getElementById("birthdate").style.border = "3px solid red";
-    boolean = false;
+    isValid = false;
   } else {
     errorBirthDate.style.display = "none";
     document.getElementById("birthdate").style.border = "0px";
@@ -92,7 +103,7 @@ function validate(event) {
   if (!emailRegex.test(inputEmail)) {
     errorMail.style.display = "block";
     document.getElementById("email").style.border = "3px solid red";
-    boolean = false;
+    isValid = false;
   } else {
     errorMail.style.display = "none";
     document.getElementById("email").style.border = "0px";
@@ -100,7 +111,7 @@ function validate(event) {
   if (!numberRegex.test(inputQuantity)) {
     errorQuantity.style.display = "block";
     document.getElementById("quantity").style.border = "3px solid red";
-    boolean = false;
+    isValid = false;
   } else {
     errorQuantity.style.display = "none";
     document.getElementById("quantity").style.border = "0px";
@@ -108,26 +119,27 @@ function validate(event) {
   //Vérification qu'au moins une case est cochée
   if (inputOptions.length === 0) {
     errorOption.style.display = "block";
-    boolean = false;
+    isValid = false;
   } else {
     errorOption.style.display = "none";
   }
   //Vérification d'acceptation des conditions d'utilisation
   if (!checkboxCondition.checked) {
     errorCondition.style.display = "block";
-    boolean = false;
+    isValid = false;
   } else {
     errorCondition.style.display = "none";
   }
   // Apparation du message apres inscription
-  if (boolean) {
+  if (isValid) {
     document.querySelector('.modal-body').style.display = 'none';
-    document.getElementById("successModal").style.display = "block";
+    document.getElementById("sucessModal").style.display = "block";
   }
 
 }
-
-function closeSuccessModal() {
+const sucessClose=document.querySelectorAll('.btn-success')
+sucessClose.forEach((btn)=>btn.addEventListener("click",closeSucessModal))
+function closeSucessModal() {
   document.querySelector('.bground').style.display = 'none';
   location.reload()
 }
